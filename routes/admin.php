@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::resource('owners',OwnersController::class)
-    ->middleware('auth:admin');
+    ->middleware('auth:admin')->except(['show']);
 
 Route::prefix('expired-owners')->
     middleware('auth:admin')->group(function () {
