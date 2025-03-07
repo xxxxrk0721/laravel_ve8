@@ -40,7 +40,8 @@
                                             <td class="px-4 py-3">{{ $owner->created_at->diffForHumans()  }}</td>
 {{--                                            <td class="px-4 py-3 text-lg text-gray-900">Free</td>--}}
                                             <td class="w-10 text-center">
-                                                <input name="plan" type="radio">
+                                                <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" class="flex mx-auto text-black bg-indigo-500 !important border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded">編集する</button>
+{{--                                                <input name="plan" type="radio">--}}
                                             </td>
                                         </tr>
                                         @endforeach
