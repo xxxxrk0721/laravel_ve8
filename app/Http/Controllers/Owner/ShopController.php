@@ -68,9 +68,12 @@ class ShopController extends Controller
         $shop->information = $request->information;
         $shop->is_selling = $request->is_selling;
 
+        }
         if(!is_null($imageFile) && $imageFile->isValid() ){
             $shop->filename = $fileNameToStore;
         }
+
+
 
         $shop->save();
 
@@ -81,7 +84,7 @@ class ShopController extends Controller
 //            $resizedImage = InterventionImage::make($imageFile)->resize(1920, 1080)->encode();
 ////            dd($imageFile,$resizedImage);
 //            Storage::put('public/shops/' . $fileNameToStore,$resizedImage );
-        }
+
 
         return redirect()
             ->route('owner.shops.index')
