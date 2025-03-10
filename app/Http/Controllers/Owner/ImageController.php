@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Owner;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
 use \App\Http\Requests\UploadImageRequest;
 use App\Services\ImageService;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -113,14 +115,20 @@ class ImageController extends Controller
                 'status' => 'info' ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $image = Image::findOrFail($id);
+        $filePath = 'public/products' . $image->filename;
+
+        if(Storage::exists($filePath)){
+            Storage::delete($filePath);
+        }
+
+        Image::findOrFail($id)->delete();
+
+        return redirect()
+            ->route('admin.images.index')
+            ->with(['message' => '画像を削除しました。',
+                'status' => 'alert']);
     }
 }
