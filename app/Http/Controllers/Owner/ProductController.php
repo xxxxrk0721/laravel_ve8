@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -212,6 +213,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        Product::findOrFail($id)->delete();
+
+        return redirect()
+            ->route('owner.products.index')
+            ->with(['message' => '商品を削除しました。',
+                'status' => 'alert']);
     }
 }
