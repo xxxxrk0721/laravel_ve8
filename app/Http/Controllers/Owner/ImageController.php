@@ -118,7 +118,7 @@ class ImageController extends Controller
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
-        $filePath = 'public/products' . $image->filename;
+        $filePath = 'public/products/' . $image->filename;
 
         if(Storage::exists($filePath)){
             Storage::delete($filePath);
@@ -127,7 +127,7 @@ class ImageController extends Controller
         Image::findOrFail($id)->delete();
 
         return redirect()
-            ->route('admin.images.index')
+            ->route('owner.images.index')
             ->with(['message' => '画像を削除しました。',
                 'status' => 'alert']);
     }
