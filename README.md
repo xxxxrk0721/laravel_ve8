@@ -1,3 +1,21 @@
+## udemy Laravel講座
+
+## インストール方法
+
+## インストール後の実施事項
+
+画像のダミーデータは
+public/imageフォルダ無いに
+sample1.jpg ～ sample6.jpg として
+保存しています。
+
+php artisan storage:link で
+storageフォルダにリンク後、
+
+strage/app/public/productsフォルダ内に
+保存すると表示されます。
+(productsフォルダが無い場合は作成してください。)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
