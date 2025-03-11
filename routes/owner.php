@@ -12,6 +12,7 @@ use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\ShopController;
 //use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Owner\ImageController;
+use App\Http\Controllers\Owner\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,9 @@ middleware('auth:owners')->group(function () {
 });
 
 Route::resource('images',ImageController::class)
+    ->middleware('auth:owners')->except(['show']);
+
+Route::resource('products',ProductController::class)
     ->middleware('auth:owners')->except(['show']);
 
 Route::get('/dashboard', function () {
