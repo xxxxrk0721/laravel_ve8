@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Image;
 use App\Models\SecondaryCategory;
 use App\Models\Shop;
+use App\Models\Stock;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,5 +26,10 @@ class Product extends Model
     public function imageFirst()
     {
         return $this->belongsTo(Image::class,'image1','id');
+    }
+
+    public function stock()
+    {
+        return $this->hasMany(Stock::class);
     }
 }
